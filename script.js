@@ -324,39 +324,56 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Investor Form Handling
+    // Investor Form Handling with Formspree
     const investorForm = document.getElementById('investorForm');
     const formResponse = document.getElementById('formResponse');
 
     if (investorForm) {
-        investorForm.addEventListener('submit', function(e) {
+        investorForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(investorForm);
-            const data = Object.fromEntries(formData.entries());
             
             // Show loading state
             formResponse.textContent = 'Submitting your inquiry...';
             formResponse.className = 'form-response visible';
             
-            // Simulate form submission (replace with actual API call)
-            setTimeout(() => {
-                // Success message
-                formResponse.textContent = 'Thank you for your interest! We will contact you within 24-48 hours.';
-                formResponse.className = 'form-response visible success';
+            // Get form data
+            const formData = new FormData(investorForm);
+            
+            try {
+                // Submit to Formspree
+                const response = await fetch(investorForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
                 
-                // Reset form
-                investorForm.reset();
+                if (response.ok) {
+                    // Success message
+                    formResponse.textContent = 'Thank you for your interest! We will contact you within 24-48 hours.';
+                    formResponse.className = 'form-response visible success';
+                    
+                    // Reset form
+                    investorForm.reset();
+                    
+                    // Hide message after 5 seconds
+                    setTimeout(() => {
+                        formResponse.classList.remove('visible');
+                    }, 5000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                // Error message
+                formResponse.textContent = 'Sorry, there was an error submitting your inquiry. Please try again or email us directly at info@seedpulsefund.com';
+                formResponse.className = 'form-response visible error';
                 
-                // Hide message after 5 seconds
+                // Hide message after 8 seconds
                 setTimeout(() => {
                     formResponse.classList.remove('visible');
-                }, 5000);
-                
-                // Log form data (for development - remove in production)
-                console.log('Form submitted:', data);
-            }, 1500);
+                }, 8000);
+            }
         });
 
         // Add focus animations to form inputs
