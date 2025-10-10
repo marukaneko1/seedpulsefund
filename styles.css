@@ -1270,27 +1270,30 @@ section.visible {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+/* Mobile Phone Only (iPhone, Android) */
+@media (max-width: 767px) {
     #main-nav {
-        padding: 1.5rem 5%;
+        padding: 1rem 3%;
     }
 
     .logo-primary {
-        font-size: 0.9rem;
-        letter-spacing: 0.1rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.05rem;
     }
 
     .logo-secondary {
-        font-size: 0.65rem;
-        letter-spacing: 0.2rem;
+        font-size: 0.5rem;
+        letter-spacing: 0.15rem;
+        margin-top: 0.1rem;
     }
 
     .nav-links {
-        gap: 1.5rem;
+        gap: 0.8rem;
     }
 
     .nav-links a {
-        font-size: 0.8rem;
+        font-size: 0.6rem;
+        letter-spacing: 0.05rem;
     }
 
     .logo-word {
@@ -1379,6 +1382,39 @@ section.visible {
 
     section {
         padding: 6rem 5%;
+    }
+
+    .next-section-btn {
+        width: 40px;
+        height: 40px;
+        bottom: 1.5rem;
+    }
+
+    .back-to-top {
+        bottom: 2rem;
+        right: 2rem;
+        width: 45px;
+        height: 45px;
+    }
+
+    .scroll-follower-1 {
+        width: 200px;
+        height: 200px;
+    }
+
+    .scroll-follower-2 {
+        width: 120px;
+        height: 120px;
+    }
+
+    .scroll-follower-3 {
+        width: 160px;
+        height: 160px;
+    }
+
+    .scroll-follower-4 {
+        width: 100px;
+        height: 100px;
     }
 }
 
@@ -1512,39 +1548,3 @@ section.visible {
 .back-to-top:hover svg {
     transform: translateY(-2px);
 }
-
-@media (max-width: 768px) {
-    .next-section-btn {
-        width: 40px;
-        height: 40px;
-        bottom: 1.5rem;
-    }
-
-    .back-to-top {
-        bottom: 2rem;
-        right: 2rem;
-        width: 45px;
-        height: 45px;
-    }
-
-    .scroll-follower-1 {
-        width: 200px;
-        height: 200px;
-    }
-
-    .scroll-follower-2 {
-        width: 120px;
-        height: 120px;
-    }
-
-    .scroll-follower-3 {
-        width: 160px;
-        height: 160px;
-    }
-
-    .scroll-follower-4 {
-        width: 100px;
-        height: 100px;
-    }
-}
-
